@@ -1,0 +1,100 @@
+#include "TXLib.h"
+
+int main()
+{
+    txCreateWindow (800, 600);
+
+    //переменные
+    int x = 100;
+    int y = 300;
+    int hp = 3;
+
+
+    int xDver = 700;
+    int yDver = 250;
+    HDC dver = txLoadImage ("dver.bmp");
+
+
+
+
+    //игра
+    while (x < 800)
+{
+    //Очистка экрана
+    txSetFillColor(TX_BLACK);
+    txClear();
+
+    /*
+    if (x1 < x4)
+    if (x3 < xDver)
+    */
+
+    if (x - 10 < xDver + 10)
+    if (x + 10 > xDver)
+    if (y - 10 < yDver + 100)
+    if (y + 10 > yDver)
+
+{
+       x = 0;
+}
+
+
+    //персонажи
+    txSetFillColor(TX_RED);
+    if (hp > 0)
+    {
+    //txRectangle(xDver,yDver,xDver+30,yDver+100);
+    txTransparentBlt(txDC(),xDver,yDver,60,90,dver,0,0,TX_WHITE);
+    //txBitBlt (txDC(), 0, 0, 800, 600, dver);
+     txTransparentBlt(txDC(),xDver,yDver,60,90,dver,0,0,TX_WHITE);
+}
+
+    txSetFillColor(TX_WHITE);
+{
+    txCircle(x,y, 20);
+}
+    //игровая логика
+
+    if (x < 0)
+{
+    x = 0;
+}
+    if (GetAsyncKeyState('D'))
+{
+    x = x + 5;
+}
+    if (GetAsyncKeyState('A'))
+    {
+        x = x - 5;
+    }
+    if (GetAsyncKeyState('W'))
+{
+    y = y - 5;
+}
+    if (GetAsyncKeyState('S'))
+{
+    y = y + 5;
+}
+
+        if (GetAsyncKeyState(VK_UP))
+        {
+            yDver = yDver - 5;
+        }
+            if (GetAsyncKeyState(VK_DOWN))
+        {
+            yDver = yDver + 5;
+        }
+
+
+
+
+        txSleep(5);            //Пауза
+
+    }
+    
+    //Удаление картинок
+    txDeleteDC (dver);
+    
+    return 0;
+}
+
